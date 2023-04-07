@@ -1,5 +1,7 @@
 package sharpa.scrapper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import sharpa.scrapper.business.MarketManager;
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class Refresher {
 
+    private static final Logger logger = LoggerFactory.getLogger(Refresher.class);
+
     @Autowired
     GetService getService;
     @Autowired
@@ -20,8 +24,7 @@ public class Refresher {
 
     public void refreshMarketData() {
 
-        System.out.println("refreshMarketData.. ");
-
+        logger.info("refreshMarketData.. ");
 
          List<Goods> goodsList = marketManager.getAllGoods();
 
@@ -35,7 +38,7 @@ public class Refresher {
                      replace(",",".")
                     );
 
-             System.out.println("Time: " + LocalDateTime.now() +
+             logger.info("Time: " + LocalDateTime.now() +
                      "   Old price: " + marketManager.getPrice(g) +
                      "   New price: " + doublePrice);
 
@@ -47,7 +50,7 @@ public class Refresher {
 
 
     public Refresher() {
-        System.out.println("Refreshing.. ");
+        logger.info("Refresher.. ");
 
     }
 

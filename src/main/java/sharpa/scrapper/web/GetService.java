@@ -2,10 +2,10 @@ package sharpa.scrapper.web;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import sharpa.scrapper.model.Goods;
 import sharpa.scrapper.view.MarketGetServiceResponse;
@@ -21,6 +21,7 @@ import java.net.http.HttpResponse;
 @PropertySource(value="classpath:application.properties")
 public class GetService {
 
+    private static final Logger logger = LoggerFactory.getLogger(GetService.class);
 
     @Value("${app.url}")
     private String url;
@@ -30,6 +31,8 @@ public class GetService {
     private String object;
 
     public MarketGetServiceResponse getPriceForGood(Goods good) {
+
+        logger.info("getPriceForGood.. ");
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
@@ -58,6 +61,8 @@ public class GetService {
     }
 
     public MarketGetServiceResponse getCrystal() {
+
+        logger.info("getCrystal.. ");
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
