@@ -26,14 +26,14 @@ public class MarketManager {
     @Autowired
     PricesDAO pricesDAO;
 
-    public MarketResponse showPrice(Goods g) {
+    public MarketResponse showPrice(String name) {
 
         logger.info("showPrice.. ");
 
-        Goods byGoodId = goodsDAO.findByGoodId(1L);
-        Prices lastPriceForGood = pricesDAO.findTopByGoodOrderByPriceDateDesc(byGoodId);
+        Goods good = goodsDAO.findByMarketName(name);
+        Prices lastPriceForGood = pricesDAO.findTopByGoodOrderByPriceDateDesc(good);
 
-        MarketResponse marketResponse = new MarketResponse(byGoodId.getMarketName(),
+        MarketResponse marketResponse = new MarketResponse(good.getMarketName(),
                 lastPriceForGood.getPrice());
 
         return marketResponse;

@@ -30,9 +30,8 @@ public class MarketController {
 
         logger.info("showMarketPrice.. ");
 
-//        return marketManager.showPrice(marketRequest.get);
+        return marketManager.showPrice(marketRequest.getGoodName());
 
-        return null;
     }
 
 

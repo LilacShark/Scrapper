@@ -12,4 +12,5 @@ public interface GoodsDAO extends JpaRepository<Goods, Long> {
     Goods findByGoodId(Long good_id);
 
 
+    Goods findByMarketName(String name);
 }
