@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import sharpa.scrapper.business.MarketManager;
 import sharpa.scrapper.model.Goods;
 import sharpa.scrapper.view.MarketGetServiceResponse;
@@ -12,7 +14,8 @@ import sharpa.scrapper.web.GetService;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Refresher {
+@Component
+class Refresher {
 
     private static final Logger logger = LoggerFactory.getLogger(Refresher.class);
 
@@ -32,18 +35,21 @@ public class Refresher {
 
              MarketGetServiceResponse priceForGood = getService.getPriceForGood(g);
 
-             Double doublePrice = Double.valueOf(priceForGood.
-                     getLowest_price().
-                     substring(0,priceForGood.getLowest_price().length()-5).
-                     replace(",",".")
-                    );
+             if (priceForGood.isSuccess()) {
 
-             logger.info("Time: " + LocalDateTime.now() +
-                     "   Old price: " + marketManager.getPrice(g) +
-                     "   New price: " + doublePrice);
+                 Double doublePrice = Double.valueOf(priceForGood.
+                         getLowest_price().
+                         substring(0,priceForGood.getLowest_price().length()-5).
+                         replace(",",".")
+                 );
 
-             marketManager.saveNewPrice(g, doublePrice);
+                 logger.info("Time: " + LocalDateTime.now() +
+                         "   Old price: " + marketManager.getPrice(g) +
+                         "   New price: " + doublePrice);
 
+                 marketManager.saveNewPrice(g, doublePrice);
+
+             }
 
          }
     }

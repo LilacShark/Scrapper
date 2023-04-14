@@ -7,6 +7,16 @@ public class MarketGetServiceResponse {
     private String volume;
     private String medianPrice;
 
+    public MarketGetServiceResponse() {
+    }
+
+    public MarketGetServiceResponse(boolean success, String lowest_price, String volume, String medianPrice) {
+        this.success = success;
+        this.lowest_price = lowest_price;
+        this.volume = volume;
+        this.medianPrice = medianPrice;
+    }
+
     public boolean isSuccess() {
         return success;
     }

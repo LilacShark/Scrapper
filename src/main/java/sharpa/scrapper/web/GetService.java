@@ -9,6 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import sharpa.scrapper.model.Goods;
 import sharpa.scrapper.view.MarketGetServiceResponse;
+import sharpa.scrapper.view.MarketResponse;
 
 import java.io.IOException;
 import java.net.URI;
@@ -55,9 +56,9 @@ public class GetService {
 
         } catch (URISyntaxException | IOException | InterruptedException e) {
             e.printStackTrace();
+            return new MarketGetServiceResponse(false, "0.0","0.0","0.0");
         }
 
-        return null;
     }
 
     public MarketGetServiceResponse getCrystal() {
