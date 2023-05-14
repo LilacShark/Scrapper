@@ -26,6 +26,59 @@ public class Storage {
     @Column(name = "selling_date")
     LocalDateTime sellingDate;
 
+    public Long getStorageId() {
+        return storageId;
+    }
 
+    public void setStorageId(Long storageId) {
+        this.storageId = storageId;
+    }
 
+    public Goods getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(Goods goodId) {
+        this.goodId = goodId;
+    }
+
+    public Double getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(Double buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public LocalDateTime getBuyDate() {
+        return buyDate;
+    }
+
+    public void setBuyDate(LocalDateTime buyDate) {
+        this.buyDate = buyDate;
+    }
+
+    public Double getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(Double sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public Double getMinimalPrice() {
+        return minimalPrice;
+    }
+
+    public void setMinimalPrice(Double minimalPrice) {
+        this.minimalPrice = minimalPrice;
+    }
+
+    public LocalDateTime getSellingDate() {
+        return sellingDate;
+    }
+
+    public void setSellingDate(LocalDateTime sellingDate) {
+        this.sellingDate = sellingDate;
+    }
 }
