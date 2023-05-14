@@ -1,31 +1,18 @@
 package sharpa.scrapper;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class Program {
+@SpringBootApplication
+@EnableScheduling
+public class Program extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
-
-        Refresher refresher = applicationContext.getBean(Refresher.class);
-
-        while(true) {
-
-            refresher.refreshMarketData();
-
-            try {
-                Thread.sleep(60000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
+        SpringApplication.run(Program.class, args);
 
     }
-
 
 }
