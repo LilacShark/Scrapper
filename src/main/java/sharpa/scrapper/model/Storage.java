@@ -11,7 +11,7 @@ public class Storage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "storage_id")
     Long storageId;
-    @Column(name = "good_id")
+//    @Column(name = "good_id")
     @ManyToOne(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
     @JoinColumn(name = "good_id")
     Goods goodId;

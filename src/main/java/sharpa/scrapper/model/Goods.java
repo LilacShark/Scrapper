@@ -22,7 +22,7 @@ public class Goods {
             fetch = FetchType.LAZY, mappedBy = "good") // отношение между таблицами
     private List<Prices> prices;
     @OneToMany(cascade = {CascadeType.REFRESH},
-            fetch = FetchType.LAZY, mappedBy = "good") // отношение между таблицами
+            fetch = FetchType.LAZY, mappedBy = "goodId") // отношение между таблицами
     private List<Storage> store;
 
 

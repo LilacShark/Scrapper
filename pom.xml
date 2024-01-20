@@ -51,11 +51,12 @@
             <version>42.2.8</version>
         </dependency>
 
+<!--        какая-то оишбка выпадает при попытки инициализации в самом начале. проблема в скоупе-->
         <!--        для упаковки вар в томкэт-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+<!--            <scope>provided</scope>-->
         </dependency>
     </dependencies>
 
