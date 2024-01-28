@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import sharpa.scrapper.model.Goods;
 import sharpa.scrapper.view.MarketGetServiceResponse;
-import sharpa.scrapper.view.MarketResponse;
 
 import java.io.IOException;
 import java.net.URI;
@@ -60,37 +59,5 @@ public class GetService {
         }
 
     }
-
-    public MarketGetServiceResponse getCrystal() {
-
-        logger.info("getCrystal.. ");
-
-        try {
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(new URI("https://steamcommunity.com/market/priceoverview/?appid=753&currency=5&market_hash_name=753-Sack%20of%20Gems"))
-                    .GET()
-                    .build();
-
-            HttpResponse<String> response = HttpClient.newBuilder()
-                    .build()
-                    .send(request, HttpResponse.BodyHandlers.ofString());
-
-            System.out.println(response.body());
-
-            Gson gson = new GsonBuilder().create();
-            MarketGetServiceResponse marketGetServiceResponse = gson.fromJson(response.body(), MarketGetServiceResponse.class);
-
-            System.out.println(marketGetServiceResponse);
-
-            return marketGetServiceResponse;
-
-        } catch (URISyntaxException | IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-
-    }
-
 
 }

@@ -57,7 +57,6 @@ class Refresher {
 
     public Refresher() {
         logger.info("Refresher.. ");
-
     }
 
 

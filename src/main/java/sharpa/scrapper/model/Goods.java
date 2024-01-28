@@ -25,6 +25,15 @@ public class Goods {
             fetch = FetchType.LAZY, mappedBy = "goodId") // отношение между таблицами
     private List<Storage> store;
 
+    public Goods(long goodId, String marketHashName, String marketName, int appId) {
+        this.goodId = goodId;
+        this.marketHashName = marketHashName;
+        this.marketName = marketName;
+        this.appId = appId;
+    }
+
+    public Goods() {
+    }
 
     public String getMarketName() {
         return marketName;

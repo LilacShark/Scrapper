@@ -62,8 +62,21 @@ public class MarketManager {
         return pricesDAO.saveAndFlush(price);
     }
 
+
     public List<Goods> getAllGoods() {
         logger.info("getAllGoods.. ");
         return goodsDAO.findAll();
     }
+
+
+    public List<String> getAllGoodsNames() {
+        logger.info("findAllGoodsNative.. ");
+        return goodsDAO.findAllGoodsNamesNativeAsString();
+    }
+
+    public List<Object> getAllGoodsNamesObject() {
+        logger.info("findAllGoodsNative.. ");
+        return goodsDAO.findAllGoodsNamesNativeAsObject();
+    }
+
 }
